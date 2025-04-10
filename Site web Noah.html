@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noah Renaud Ebenisterie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Variables */
+        :root {
+            --primary: #7a5a35;
+            --secondary: #574027;
+            --accent: #9b7c51;
+            --light: #f5f1e8;
+            --dark: #2c2418;
+            --text: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --radius: 8px;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+
+        .header-scrolled {
+            background-color: rgba(44, 36, 24, 0.95);
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/img_0623-standard.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .hero-btn {
+            animation: fadeIn 1s ease 0.6s;
+            animation-fill-mode: both;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: var(--secondary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background-color: var(--dark);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-btn {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Inspiration Section */
+        .inspiration {
+            background-color: var(--secondary);
+        }
+
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .inspiration-item {
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .inspiration-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .inspiration-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .inspiration-item:hover .inspiration-icon {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Testimonial Section */
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1100;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--dark);
+            color: var(--text);
+            width: 90%;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-30px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--text);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+
+        .modal-footer {
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            margin: 0 1rem;
+        }
+
+        .footer-link a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <a href="#" class="logo">Noah Renaud <span style="font-weight:300;">Ebenisterie</span></a>
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Réalisations</a></li>
+                <li class="nav-item"><a href="#inspiration" class="nav-link">Inspirations</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Passionné par le bois,<br> de l'atelier à la forêt</h1>
+            <h2 class="hero-subtitle">Noah Renaud</h2>
+            <a href="#about" class="btn hero-btn">Découvrir mon univers</a>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Bonjour, je m'appelle Noah !</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right" data-aos-delay="100">
+                    <p>Depuis toujours, la forêt m'inspire. Le bruissement des feuillages, l'odeur du bois fraîchement coupé, la noblesse des essences qui traversent les âges… Ces éléments ont bercé mon imaginaire et forgé ma fascination pour le bois.</p>
+                    <p>D'abord engagé dans des études de droit, j'ai cherché à donner du sens à mon parcours, à lui apporter une dimension plus concrète, plus tangible. Mon expérience en service civique et en CDD dans l'aide à l'accès au droit m'a beaucoup appris sur la rigueur et l'engagement, mais une autre vocation grandissait en moi. J'ai toujours aimé travailler de mes mains, comprendre la matière, la modeler, la transformer. Peu à peu, le bois est devenu une évidence.</p>
+                    <p>Aujourd'hui, avec conviction et passion, je souhaite me former au métier d'ébéniste. Ce métier d'art, qui allie tradition et modernité, savoir-faire ancestral et innovation, représente pour moi l'équilibre parfait entre créativité et précision. Je veux apprendre à respecter la matière, à la sublimer, à donner naissance à des pièces uniques qui traverseront le temps.</p>
+                    <p>Mon ambition est de me forger une solide maîtrise des techniques, d'explorer les styles et les finitions, pour un jour me lancer en libéral. L'idéal serait d'intégrer un atelier partagé, convaincu que l'émulation entre artisans et créateurs enrichit le savoir-faire et le perfectionne.</p>
+                    <p>Ce portfolio est une fenêtre ouverte sur mon univers, mon engagement et mon désir d'apprentissage. J'espère qu'il saura témoigner de ma motivation et de ma volonté d'intégrer cette formation.</p>
+                </div>
+                <div class="about-image" data-aos="fade-left" data-aos-delay="100">
+                    <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/img_1118-high.jpg" alt="Noah Renaud - Ébéniste">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Mes réalisations</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-image">
+                        <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/img_1118-high.jpg" alt="Coffre en bois">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Coffre en bois</h3>
+                        <p class="portfolio-category">Simplicité et Précision</p>
+                        <p>Un coffre en bois créé avec soin, alliant fonctionnalité et esthétique.</p>
+                        <div class="portfolio-btn">
+                            <a href="#" class="btn open-modal" data-modal="modal-coffre">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-image">
+                        <img src="https://primary.jwwb.nl/pexels/59/5986438.jpeg" alt="Meuble pour platine et ampli">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Meuble pour platine et ampli</h3>
+                        <p class="portfolio-category">Un écrin pour le son</p>
+                        <p>Un meuble conçu spécialement pour accueillir une platine vinyle et son amplificateur.</p>
+                        <div class="portfolio-btn">
+                            <a href="#" class="btn open-modal" data-modal="modal-meuble">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--<div class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-image">
+                        <img src="https://primary.jwwb.nl/pexels/19/19945745.jpeg" alt="Enceinte centrale close">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Enceinte centrale close</h3>
+                        <p class="portfolio-category">Technique et modernité</p>
+                        <p>Une enceinte centrale en bois massif, conçue pour une acoustique parfaite.</p>
+                        <div class="portfolio-btn">
+                            <a href="#" class="btn open-modal" data-modal="modal-enceinte">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiration Section -->
+    <section class="section inspiration" id="inspiration">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Inspirations et références</h2>
+            <div class="inspiration-grid">
+                <div class="inspiration-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="inspiration-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Artisans et designers</h3>
+                    <p>Pierre Chapo, Charlotte Perriand et Jean Prouvé sont les créateurs qui nourrissent ma vision de l'ébénisterie.</p>
+                    <a href="#" class="btn open-modal" data-modal="modal-tradition">Lire plus</a>
+                </div>
+                
+                <div class="inspiration-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="inspiration-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Styles de mobilier</h3>
+                    <p>Art déco, contemporain ou rustique revisité, chaque style offre une approche unique du travail du bois.</p>
+                    <a href="#" class="btn open-modal" data-modal="modal-precision">Lire plus</a>
+                </div>
+                
+                <div class="inspiration-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="inspiration-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Matériaux et techniques</h3>
+                    <p>Du choix des essences aux méthodes d'assemblage traditionnelles, en passant par les finitions naturelles.</p>
+                    <a href="#" class="btn open-modal" data-modal="modal-materiaux">Lire plus</a>
+                </div>
+                
+                <div class="inspiration-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="inspiration-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Ma vision</h3>
+                    <p>Entre tradition et innovation, ma démarche artisanale cherche à créer des pièces uniques au service de l'usage.</p>
+                    <a href="#" class="btn open-modal" data-modal="modal-innovation">Lire plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contactez-moi</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
+                    <h3>🚧 En Travaux 🚧</h3>
+                    <p></p>
+                    <p><strong></p>
+                </div>
+                <div class="contact-form" data-aos="fade-left" data-aos-delay="100">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email *" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Votre message *" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Noah Renaud Ebenisterie</h3>
+                <p>Artisan du bois, créateur de meubles uniques</p>
+            </div>
+            <ul class="footer-links">
+                <li class="footer-link"><a href="#about">À propos</a></li>
+                <li class="footer-link"><a href="#portfolio">Réalisations</a></li>
+                <li class="footer-link"><a href="#inspiration">Inspirations</a></li>
+                <li class="footer-link"><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Noah Renaud - tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Sections -->
+    <!-- Portfolio Modals -->
+    <div class="modal" id="modal-coffre">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Coffre en bois - Simplicité et Précision</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                    <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/image-high.png" alt="Coffre en bois - Vue principale" style="width: 100%; height: auto; border-radius: var(--radius);">
+                    <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/image-high-6k6eo1.png" alt="Coffre en bois - Fabrication" style="width: 100%; height: auto; border-radius: var(--radius);">
+                    <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/img_1122-high-f12t7n.jpg" alt="Coffre en bois - Détail" style="width: 100%; height: auto; border-radius: var(--radius);">
+                    <img src="https://primary.jwwb.nl/public/u/s/b/temp-xqkpgxofoandfaocndxp/img_1119-high.jpg" alt="Coffre en bois - Vue d'ensemble" style="width: 100%; height: auto; border-radius: var(--radius);">
+                </div>
+                
+                <h3>Une idée née d'un besoin… et d'un désir</h3>
+                <p>Ce projet est né d'un besoin de rangement, mais surtout de l'envie profonde d'explorer le bois, à travers un objet à la fois utile et esthétique.</p>
+                <p>J'ai choisi le <strong>pin lamellé-collé</strong> : un bois chaleureux, vivant, qui dégage une véritable présence.</p>
+                <p>Avant le moindre coup de scie, j'ai pris le temps de poser l'idée sur le papier. Un <strong>dessin à la main</strong>, pour donner forme à l'intuition et traduire en traits l'objet que j'imaginais.</p>
+                
+                <h3>Fabrication</h3>
+                <ul style="padding-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Découpes précises</strong> à la scie sauteuse</li>
+                    <li><strong>Assemblage à la colle vinylique</strong>, sous pression grâce aux serres-joints</li>
+                    <li><strong>Ponçage en trois passes</strong> : grain 120, 180, 240</li>
+                    <li><strong>Finition à l'huile de lin</strong>, pour faire ressortir les veines du bois et le réchauffer</li>
+                    <li><strong>Bords légèrement arrondis</strong> pour l'esthétique et un toucher agréable</li>
+                </ul>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 15px;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h3>Détails techniques</h3>
+                        <ul style="padding-left: 20px;">
+                            <li><strong>Ouverture</strong> assurée par deux charnières arrière</li>
+                            <li><strong>Fermeture</strong> par loquet à l'avant</li>
+                            <li><strong>Finition naturelle</strong> : deux couches d'huile de lin</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <h3>Perspectives d'amélioration</h3>
+                        <p>Remplacer les charnières classiques par des <strong>charnières invisibles</strong>, pour créer un effet de <strong>"boîte magique"</strong>, où l'ouverture se fond dans la matière, sans rupture visuelle.</p>
+                    </div>
+                </div>
+                
+                <blockquote style="border-left: 3px solid var(--accent); padding-left: 15px; font-style: italic; margin: 20px 0;">
+                    J'ai beaucoup apprécié réaliser ce projet, qui m'a demandé de la patience et de la précision. Je pense que plus un objet est simple plus sa réalisation doit être irréprochable. Malgré l'apparente simplicité tout se trouve dans le détail et rien n'a été laissé au hasard.
+                </blockquote>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-meuble">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Meuble pour platine et ampli - Un écrin pour le son</h2>
+            </div>
+            <div class="modal-body">
+                <img src="https://primary.jwwb.nl/pexels/59/5986438.jpeg" alt="Meuble pour platine et ampli" style="width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 20px;">
+                
+                <p>Créer un meuble pour mon ampli et ma platine vinyle relevait d'un double défi : allier praticité et esthétique, tout en respectant les exigences techniques du matériel hi-fi. Un bel objet mérite un écrin à sa hauteur.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <h3>Matériaux et conception</h3>
+                        <p>J'ai choisi le <strong>hêtre massif contrecollé</strong>, un bois noble et dur, capable d'absorber les vibrations et de sublimer les lignes du meuble. Son ton clair contraste élégamment avec le noir profond de l'ampli et de la platine.</p>
+                        <p>Avant de me lancer, j'ai dessiné un plan à la main, puis l'ai modélisé sur SketchUp pour anticiper chaque détail de la conception.</p>
+                    </div>
+                    <div>
+                        <h3>Techniques d'assemblage</h3>
+                        <p>L'assemblage a été réalisé avec <strong>tourillons et colle</strong>, une technique minutieuse qui permet d'obtenir un rendu sans vis apparentes, renforçant ainsi l'élégance et la fluidité du design.</p>
+                        <p>Pour assurer la stabilité et la longévité du meuble face aux 15 kg de l'ampli, j'ai ajouté des <strong>équerres métalliques discrètes</strong> sous l'étagère.</p>
+                    </div>
+                </div>
+                
+                <h3>Fabrication et finition</h3>
+                <ul style="padding-left: 20px; margin-bottom: 20px;">
+                    <li>Pieds découpés dans des <strong>tasseaux de hêtre</strong> (44 mm de section, 10 cm de hauteur), poncés et peints en noir</li>
+                    <li>Coupes réalisées à la <strong>scie à onglet</strong>, garantissant une précision essentielle pour un assemblage parfait</li>
+                    <li>Alignement des tourillons avec petits points de repère et guide de perçage fabricué sur mesure</li>
+                    <li>Finitions : ponçage progressif (grain 120 → 180 → 240) suivi de deux couches d'huile de lin</li>
+                </ul>
+                
+                <h3>Spécifications techniques</h3>
+                <ul style="padding-left: 20px;">
+                    <li><strong>Stabilité et résistance</strong> → Équerres métalliques pour supporter le poids de l'ampli (15 kg)</li>
+                    <li><strong>Isolation acoustique</strong> → Bois massif pour limiter la transmission des vibrations des enceintes du sol vers la platine</li>
+                </ul>
+                
+                <p>Ce projet a été une première expérience enrichissante avec les tourillons, me donnant envie d'explorer d'autres techniques similaires comme l'assemblage par dominos ou biscuits.</p>
+                
+                <p>Le résultat est un meuble parfaitement adapté, fonctionnel et raffiné, qui met en valeur le matériel hi-fi tout en affirmant un design sobre et équilibré.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+<!---
+    <div class="modal" id="modal-enceinte">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Enceinte centrale close - Technique et modernité</h2>
+            </div>
+            <div class="modal-body">
+                <img src="https://primary.jwwb.nl/pexels/19/19945745.jpeg" alt="Enceinte centrale close" style="width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 20px;">
+                
+                <h3>Un défi technique et sonore</h3>
+                <p>L'envie de réaliser cette enceinte centrale est née d'une double nécessité : améliorer l'équilibre d'un système home cinéma en remplaçant une enceinte trop faible, et valoriser un haut-parleur récupéré, un Pioneer TS-1323 (10 cm – 60 W – 4 Ohm). Ce projet fut aussi l'occasion de relever un défi d'ébénisterie technique, mêlant acoustique, design et précision.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                    <div>
+                        <h3>Conception & design</h3>
+                        <p>Le plan a d'abord été esquissé à la main, puis modélisé sur SketchUp pour affiner les proportions et l'intégration dans l'espace.</p>
+                        <p>Je voulais une esthétique moderne et minimaliste, mais qui s'affirme dans le salon comme une pièce unique.</p>
+                        <p>J'ai donc choisi une peinture émeraude intense, subtilement contrastée par le gris du cache-poussière du haut-parleur – un clin d'œil au mariage entre matière technique et regard sensible.</p>
+                    </div>
+                    <div>
+                        <h3>Construction & acoustique</h3>
+                        <p>Le choix du <strong>MDF 15 mm</strong> s'est imposé pour ses qualités acoustiques (rigidité, neutralité).</p>
+                        <p>L'enceinte a été conçue en <strong>charge close</strong> (sans bass-reflex), pour respecter la vocation d'une centrale : restitution claire des voix et des effets centraux.</p>
+                        <p>Le volume interne de <strong>4 litres</strong> a été calculé en prenant en compte le diamètre et la puissance du HP, son usage spécifique (dialogues et précision), et l'absence d'évents.</p>
+                    </div>
+                </div>
+                
+                <h3>Fabrication</h3>
+                <ul style="padding-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Découpe</strong> : scie sauteuse avec lame fine pour les arrondis. Trou du haut-parleur découpé avec précision, celui du bornier arrière avec une scie-cloche de 50 mm. Pour limiter les éclats du MDF, j'ai soigneusement appliqué du ruban de masquage avant chaque découpe.</li>
+                    <li><strong>Assemblage</strong> : collage à la colle vinylique renforcé par serre-joints.</li>
+                    <li><strong>Traitement interne</strong> : mousse acoustique sur les parois pour amortir les ondes internes et enrichir le rendu.</li>
+                </ul>
+                
+                <h3>Finition</h3>
+                <ul style="padding-left: 20px; margin-bottom: 20px;">
+                    <li>Le MDF a été poncé progressivement (grain 120, 180, puis 240) pour obtenir une surface douce et prête à recevoir la peinture.</li>
+                    <li>Une sous-couche spéciale MDF a été appliquée pour éviter une absorption excessive.</li>
+                    <li>Deux couches de peinture émeraude, appliquées avec soin, ont donné à la pièce sa personnalité unique.</li>
+                </ul>
+                
+                <h3>Résultat sonore et retour personnel</h3>
+                <p>L'enceinte a transformé l'équilibre du système audio : les dialogues sont plus nets, plus profonds, les effets mieux localisés. Le haut-parleur, bien mis en valeur dans son coffret sur-mesure, s'exprime enfin pleinement.</p>
+                
+                <p>Au-delà du son, j'ai découvert dans ce projet le travail du MDF, ses qualités mais aussi ses exigences : une découpe propre demande quelques attentions. Avec tous les matériaux mais d'autant plus avec le MDF qui est un matériau toxique, il faut veiller à porter un masque au ponçage et au sciage, en plus des autres EPI (lunettes, gants).</p>
+                
+                <h3>Perspectives</h3>
+                <p>Ce projet m'a donné envie d'aller plus loin. Pourquoi pas une paire d'enceintes bibliothèques ou une enceinte nomade, avec batterie et petit ampli intégré. Et pourquoi ne pas habiller ces projets de placages en bois noble.</p>
+                
+                <p>En résumé, construire une enceinte est bien plus qu'un simple cube en bois. C'est une caisse de résonance pour un son sur-mesure. Une forme simple, mais pensée, mesurée, équilibrée. Un geste artisanal au service de l'écoute.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+-->
+
+    <!-- Inspiration Modals -->
+    <div class="modal" id="modal-tradition">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Artisans et designers qui m'inspirent</h2>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div>
+                        <h3>Pierre Chapo</h3>
+                        <p>Je suis particulièrement inspiré par Pierre Chapo, dont le travail sur le bois massif et les assemblages d'une grande précision me fascinent. Ses créations, à la fois robustes et élégantes, démontrent un profond respect pour le matériau et une harmonie dans les proportions.</p>
+                        <p><em>Référence : T21 Dining Table, Pierre Chapo</em></p>
+                    </div>
+                    <div>
+                        <h3>Charlotte Perriand</h3>
+                        <p>Charlotte Perriand est une autre figure qui influence ma vision du design et de l'ébénisterie. Son approche, mêlant fonctionnalité et esthétique épurée, démontre que le bois peut s'intégrer aussi bien dans des intérieurs modernes que dans des environnements plus traditionnels. Elle a su marier artisanat et innovation, une démarche qui me parle particulièrement.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Jean Prouvé</h3>
+                    <p>Enfin, l'ingéniosité de Jean Prouvé, bien que davantage tournée vers le métal, m'inspire dans la manière dont il repensait la fabrication du mobilier en alliant esthétique et technicité. Son approche me pousse à envisager l'ébénisterie comme un domaine en constante évolution, où l'on peut expérimenter et dépasser les limites des techniques traditionnelles.</p>
+                    <p><em>Référence : table compas, 1953 - pieds en tôle</em></p>
+                </div>
+                
+                <p>Les techniques d'assemblage traditionnel (tenon-mortaise, queues d'aronde, enfourchement) me passionnent car elles permettent de créer des structures solides sans recours excessif à la visserie ou à la colle industrielle. Ces savoir-faire ancestraux apportent aux meubles une durabilité et un cachet unique.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-precision">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Styles de mobilier que j'apprécie</h2>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div>
+                        <h3>L'Art déco</h3>
+                        <p>L'Art déco, avec ses lignes élégantes et ses marqueteries sophistiquées, incarne un équilibre entre luxe et maîtrise technique. J'admire notamment le travail du palissandre, du noyer et de l'acajou, souvent utilisés dans ce style pour les teintes riches et profondes.</p>
+                        <p><em>Référence : Table circulaire à double plateau, Gaston Suisse, 1930</em></p>
+                    </div>
+                    <div>
+                        <h3>Le mobilier contemporain</h3>
+                        <p>Le mobilier contemporain, plus minimaliste, me séduit par sa capacité à mettre en avant la pureté des formes et la beauté brute du bois. J'aime l'idée d'un design épuré où chaque détail est pensé pour allier confort et esthétisme.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Le mobilier rustique revisité</h3>
+                    <p>Le mobilier rustique revisité, qui valorise le bois brut et les finitions naturelles, me parle pour son authenticité et son lien direct avec la matière. Ce style met souvent en avant des assemblages apparents et des finitions à l'huile ou à la cire, ce qui renforce l'aspect vivant du meuble.</p>
+                </div>
+                
+                <h3>La précision au service de l'esthétique</h3>
+                <p>La précision est la clé d'un travail d'ébénisterie réussi. Chaque mesure, chaque coupe, chaque assemblage doit être réalisé avec une exactitude minutieuse. C'est dans ces détails que se révèle la qualité d'une pièce.</p>
+                <p>Cette attention aux détails se retrouve également dans les éléments invisibles de la construction, comme les structures internes ou les renforts, qui garantissent la durabilité et la qualité de chaque création.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-materiaux">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>Matériaux et techniques qui m'intéressent</h2>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div>
+                        <h3>Essences de bois</h3>
+                        <p>Dans l'apprentissage du métier d'ébéniste, je suis particulièrement intéressé par le travail des essences de bois :</p>
+                        <ul style="padding-left: 20px;">
+                            <li><strong>Le chêne</strong> pour sa robustesse et son veinage marqué</li>
+                            <li><strong>Le noyer</strong> pour sa chaleur et sa profondeur</li>
+                            <li><strong>Le frêne</strong> pour sa flexibilité</li>
+                            <li><strong>Le pin lamellé-collé</strong> pour sa chaleur et sa présence</li>
+                            <li><strong>Le hêtre massif</strong> pour sa noblesse et sa capacité à absorber les vibrations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Techniques d'assemblage</h3>
+                        <p>Les techniques d'assemblage traditionnel me passionnent car elles permettent de créer des structures solides sans recours excessif à la visserie ou à la colle industrielle :</p>
+                        <ul style="padding-left: 20px;">
+                            <li><strong>Tenon-mortaise</strong></li>
+                            <li><strong>Queues d'aronde</strong></li>
+                            <li><strong>Enfourchement</strong></li>
+                            <li><strong>Tourillons</strong></li>
+                            <li><strong>Dominos</strong> (à explorer)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Finitions naturelles</h3>
+                <p>Les finitions naturelles m'intéressent pour leur capacité à sublimer le bois tout en le protégeant sans altérer son aspect brut. Elles s'inscrivent également dans une démarche respectueuse de l'environnement, un aspect qui me tient à cœur :</p>
+                <ul style="padding-left: 20px;">
+                    <li><strong>Huile de lin</strong> - pour faire ressortir les veines du bois et le réchauffer</li>
+                    <li><strong>Cire d'abeille</strong> - pour une protection naturelle</li>
+                    <li><strong>Gomme laque</strong> - pour des finitions traditionnelles</li>
+                </ul>
+                
+                <p>Mon attrait pour l'ébénisterie se nourrit de ces influences et de ces aspirations. Je souhaite explorer et maîtriser ces différentes techniques pour, à terme, développer ma propre signature artisanale.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-innovation">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <h2>L'ébénisterie : entre tradition et innovation</h2>
+            </div>
+            <div class="modal-body">
+                <p>L'ébénisterie est pour moi un art à la croisée de la tradition et de l'innovation. Le bois, matériau noble et intemporel, porte en lui une histoire, une mémoire. Mon désir d'apprendre ce métier s'inscrit dans cette volonté de comprendre la matière, d'explorer ses possibilités et de perpétuer un savoir-faire.</p>
+                
+                <blockquote style="border-left: 3px solid var(--accent); padding-left: 15px; font-style: italic; margin: 20px 0;">
+                    Aujourd'hui, travailler le bois est ce qui m'épanouit le plus. J'ai besoin d'apprendre de nouvelles techniques afin de me réaliser et de ne pas rester bridé.
+                </blockquote>
+                
+                <h3>Mon parcours et ma vision</h3>
+                <p>D'abord engagé dans des études de droit, j'ai cherché à donner du sens à mon parcours, à lui apporter une dimension plus concrète, plus tangible. Mon expérience en service civique et en CDD dans l'aide à l'accès au droit m'a beaucoup appris sur la rigueur et l'engagement, mais une autre vocation grandissait en moi.</p>
+                
+                <p>J'ai toujours aimé travailler de mes mains, comprendre la matière, la modeler, la transformer. Peu à peu, le bois est devenu une évidence.</p>
+                
+                <h3>Pourquoi l'ébénisterie ?</h3>
+                <p>Ce métier d'art, qui allie tradition et modernité, savoir-faire ancestral et innovation, représente pour moi l'équilibre parfait entre créativité et précision. Je veux apprendre à respecter la matière, à la sublimer, à donner naissance à des pièces uniques qui traverseront le temps.</p>
+                
+                <h3>Mes aspirations</h3>
+                <p>Mon ambition est de me forger une solide maîtrise des techniques, d'explorer les styles et les finitions, pour un jour me lancer en libéral. L'idéal serait d'intégrer un atelier partagé, convaincu que l'émulation entre artisans et créateurs enrichit le savoir-faire et le perfectionne.</p>
+                
+                <p>Si je m'inspire des techniques traditionnelles, je n'hésite pas à explorer des approches innovantes pour créer des pièces uniques qui répondent aux besoins contemporains. L'ébénisterie moderne permet de combiner le savoir-faire ancestral avec de nouvelles technologies et matériaux.</p>
+                
+                <p>Cette approche hybride me permet de créer des meubles qui conjuguent l'âme et la chaleur du travail artisanal avec les possibilités offertes par l'innovation contemporaine.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn modal-close-btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (!this.classList.contains('open-modal')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Modal functionality
+        const modalBtns = document.querySelectorAll('.open-modal');
+        const modalCloseBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+        const modals = document.querySelectorAll('.modal');
+
+        // Open modal
+        modalBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = btn.dataset.modal;
+                const modal = document.getElementById(modalId);
+                
+                // Close any open modal first
+                modals.forEach(m => m.classList.remove('show'));
+                
+                // Open the requested modal with a slight delay for smooth transition
+                setTimeout(() => {
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+                }, 50);
+            });
+        });
+
+        // Close modal
+        modalCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modals.forEach(modal => {
+                    modal.classList.remove('show');
+                });
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+        });
+
+        // Close modal when clicking outside content
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.remove('show');
+                });
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        });
+    </script>
+</body>
+</html>
