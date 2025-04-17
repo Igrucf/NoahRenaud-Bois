@@ -28,6 +28,10 @@ box-sizing: border-box;
 scroll-behavior: smooth;
 }
 
+html, body {
+overflow-x: hidden;
+}
+
 body {
 font-family: 'Raleway', sans-serif;
 line-height: 1.6;
@@ -262,21 +266,6 @@ z-index: 1;
 max-width: 800px;
 padding: 2rem;
 animation: grow 1.2s ease-out forwards;
-}
-
-.hero-content:before {
-content: '';
-position: absolute;
-top: -20px;
-left: -20px;
-right: -20px;
-bottom: -20px;
-border: 1px solid rgba(255, 255, 255, 0.1);
-z-index: -1;
-transform: scale(0.95);
-opacity: 0;
-animation: fadeIn 2s ease-out 1s forwards, grow 2s ease-out 1s forwards;
-border-radius: 10px;
 }
 
 .hero-title {
@@ -600,94 +589,74 @@ top: -100%;
 left: -100%;
 }
 
-/* Testimonial Section */
-/* Modal Styles */
+/* Modal Styles - Simplified */
 .modal {
-display: none;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.6);
-z-index: 1100;
-overflow-y: auto;
-opacity: 0;
-transition: opacity 0.3s ease;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  overflow-y: auto;
 }
 
 .modal.show {
-display: block;
-opacity: 1;
+  display: block;
 }
 
 .modal-content {
-position: relative;
-background-color: var(--dark);
-color: var(--text);
-width: 90%;
-max-width: 700px;
-margin: 50px auto;
-padding: 2rem;
-border-radius: var(--radius);
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-transform: translateY(-30px);
-transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-border: 1px solid rgba(155, 124, 81, 0.1);
-background-image: 
-    linear-gradient(135deg, rgba(87, 64, 39, 0.05) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(87, 64, 39, 0.05) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(87, 64, 39, 0.05) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(87, 64, 39, 0.05) 25%, #2c2418 25%);
-background-position: 10px 0, 10px 0, 0 0, 0 0;
-background-size: 20px 20px;
-background-repeat: repeat;
-}
-
-.modal.show .modal-content {
-transform: translateY(0);
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-border: 1px solid rgba(155, 124, 81, 0.3);
+  position: relative;
+  background-color: var(--dark);
+  color: var(--text);
+  width: 90%;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal-close {
-position: absolute;
-top: 1rem;
-right: 1rem;
-font-size: 1.5rem;
-color: var(--text);
-background: none;
-border: none;
-cursor: pointer;
-transition: var(--transition);
-}
-
-.modal-close:hover {
-color: var(--accent);
-transform: rotate(90deg);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .modal-header {
-margin-bottom: 1rem;
-padding-bottom: 1rem;
-border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #444;
 }
 
 .modal-body {
-margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .modal-body img {
-width: 100%;
-height: auto;
-border-radius: var(--radius);
-margin-bottom: 1rem;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
 }
 
 .modal-footer {
-text-align: right;
-padding-top: 1rem;
-border-top: 1px solid #eee;
+  text-align: right;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
 }
 
 /* Footer */
@@ -1114,7 +1083,7 @@ border-radius: var(--radius);
 <!-- Portfolio Modals -->
 <div class="modal" id="modal-coffre">
 <div class="modal-content">
-<button class="modal-close"><i class="fas fa-times"></i></button>
+<span class="modal-close"><i class="fas fa-times"></i></span>
 <div class="modal-header">
 <h2>Coffre en bois - Simplicité et Précision</h2>
 </div>
@@ -1473,57 +1442,61 @@ behavior: 'smooth'
 });
 });
 
-// Modal functionality
-const modalBtns = document.querySelectorAll('.open-modal');
-const modalCloseBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
-const modals = document.querySelectorAll('.modal');
-
-// Open modal
-modalBtns.forEach(btn => {
-btn.addEventListener('click', (e) => {
-e.preventDefault();
-const modalId = btn.dataset.modal;
-const modal = document.getElementById(modalId);
-
-// Close any open modal first
-modals.forEach(m => m.classList.remove('show'));
-
-// Open the requested modal with a slight delay for smooth transition
-setTimeout(() => {
-modal.classList.add('show');
-document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
-}, 50);
-});
-});
-
-// Close modal
-modalCloseBtns.forEach(btn => {
-btn.addEventListener('click', () => {
-modals.forEach(modal => {
-modal.classList.remove('show');
-});
-document.body.style.overflow = 'auto'; // Restore scrolling
-});
-});
-
-// Close modal when clicking outside content
-modals.forEach(modal => {
-modal.addEventListener('click', (e) => {
-if (e.target === modal) {
-modal.classList.remove('show');
-document.body.style.overflow = 'auto'; // Restore scrolling
-}
-});
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-if (e.key === 'Escape') {
-modals.forEach(modal => {
-modal.classList.remove('show');
-});
-document.body.style.overflow = 'auto'; // Restore scrolling
-}
+// Completely rewrite modal functionality with a simpler approach
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all elements
+  const openButtons = document.querySelectorAll('.open-modal');
+  const closeButtons = document.querySelectorAll('.modal-close, .modal-close-btn');
+  
+  // Function to open modal
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  // Function to close all modals
+  function closeAllModals() {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(function(modal) {
+      modal.classList.remove('show');
+    });
+    document.body.style.overflow = '';
+  }
+  
+  // Add open button listeners
+  openButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const modalId = this.getAttribute('data-modal');
+      openModal(modalId);
+    });
+  });
+  
+  // Add close button listeners
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+    });
+  });
+  
+  // Close when clicking outside modal content
+  window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+      closeAllModals();
+    }
+  });
+  
+  // Close with ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
+  });
 });
 </script>
 </body>
